@@ -10,10 +10,10 @@
 
 
 //evolution of the disease
-using namespace std;
 
 State disease::Disease::evolve_(State const &begin) {
   auto end = State();
+  
   end.s = begin.s - beta_ * begin.i * begin.s; //equation 3a
   if (end.s < 0) {
     end.s = 0;
@@ -22,10 +22,7 @@ State disease::Disease::evolve_(State const &begin) {
   if (end.r > tot_) {
     end.r = tot_;
   }
-  end.i = begin.i + beta_ * begin.i * begin.s - gamma_ * begin.i; //equation 3c
-  if (end.i > tot_) {
-    end.i = tot_ - end.r - end.s;
-  }
+  end.i = tot_ - end.s - end.r;
   
   assert(!(end.s < 0));
   assert(!(end.i < 0));
@@ -33,7 +30,7 @@ State disease::Disease::evolve_(State const &begin) {
   return end;
 };
 
-disease::Disease::Disease(string p, int n, double inf, double b, double y) : name_{p} {
+disease::Disease::Disease(std::string p, int n, double inf, double b, double y) : name_{p} {
   assert(b > 0 && b < 1);
   assert(y > 0 && y < 1);
   assert(n > 1);
@@ -54,25 +51,20 @@ void disease::Disease::evolve(int n) {
 //printing the results
 void disease::Disease::print() {
   int i = 0;
-  auto tab = setw(15);
-  cout << "Disease name: " << name_ << '\n';
-  cout << "Current value of R0: " << (tot_ * beta_) / gamma_ << '\n'; //R0
-  cout << tab << "Day" << tab << "Susceptible" << tab << "Infectuos" << tab
-            << "Recovered" << '\n';
+  auto tab = std::setw(15);
+  std::cout << "Disease name: " << name_ << '\n';
+  std::cout << "Current value of R0: " << (tot_ * beta_) / gamma_ << '\n'; //R0
+  std::cout << tab << "Day" << tab << "Susceptible" << tab << "Infectuos" << tab << "Recovered" << '\n';
   for (auto const it : state_) {
-    cout << setprecision(10) << tab << i << tab << (int)it.s << tab
+    //std::cout << tab << i << tab << it.s << tab << it.i << tab << it.r << '\n';
+    std::cout << tab << i << tab << round(it.s) << tab << round(it.i) << tab << round(it.r) << '\n';
+    ++i;
+  }
+/*
+  for (auto const it : state_) {
+    std::cout << std::setprecision(10) << tab << i << tab << (int)it.s << tab
               << (int)it.i << tab << (int)it.r << '\n';
     ++i;
   }
-}
-
-//saving the results in "epidemic.txt"
-void disease::Disease::f_print() { 
-  streambuf *backup = cout.rdbuf();
-  ofstream fp;
-  fp.open("epidemic.txt");
-  cout.rdbuf(fp.rdbuf());
-  print();
-  fp.close();
-  cout.rdbuf(backup);
+*/
 }
