@@ -56,9 +56,18 @@ void disease::Disease::print() {
   std::cout << "Current value of R0: " << (tot_ * beta_) / gamma_ << '\n'; //R0
   std::cout << tab << "Day" << tab << "Susceptible" << tab << "Infectuos" << tab << "Recovered" << '\n';
   for (auto const it : state_) {
-    //std::cout << tab << i << tab << it.s << tab << it.i << tab << it.r << '\n';
+    if (round(it.s) + round(it.r) + round(it.i) > tot_) {
+      std::cout << tab << i << tab << round(it.s) << tab << floor(it.i) << tab << round(it.r) << '\n';
+    ++i;  
+    } else{
+    if (round(it.s) + round(it.r) + round(it.i) < tot_) {
+      std::cout << tab << i << tab << round(it.s) << tab << ceil(it.i) << tab << round(it.r) << '\n';
+    ++i;  
+    } else {
     std::cout << tab << i << tab << round(it.s) << tab << round(it.i) << tab << round(it.r) << '\n';
     ++i;
+    }
+    }
   }
 /*
 prova 1 //non funziona perchè stampa 400 volte
