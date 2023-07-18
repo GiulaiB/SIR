@@ -3,49 +3,49 @@
 //******************************************
 
 #include "disease.hpp"
-using namespace std;
+
 int main() {
     int N, I0, days; //population sample, initial number of infected people, days of development
     double BETA, GAMMA;
-    string name;
+    std::string name;
     
-    cout << "Welcome to SIR simulator!" << endl;
-    cout << "Please insert the name of the disease: ";
-    cin >> name;
+    std::cout << "Welcome to SIR simulator!" << '\n';
+    std::cout << "Please insert the name of the disease: ";
+    std::cin >> name;
 
     do{
-        cout << "Please insert Beta value: ";
-        cin >> BETA;
+        std::cout << "Please insert Beta value: ";
+        std::cin >> BETA;
         if (BETA<0 || BETA >1)
-            cout << "Error: Beta value must be in the range [0,1]" << endl;
+            std::cout << "Error: Beta value must be in the range [0,1]" << '\n';
     } while (BETA<0 || BETA >1);
 
     do{
-        cout << "Please insert Gamma value: ";
-        cin >> GAMMA;
+        std::cout << "Please insert Gamma value: ";
+        std::cin >> GAMMA;
         if (GAMMA<0 || GAMMA >1)
-            cout << "Error: Gamma value must be in the range [0,1]" << endl;
+            std::cout << "Error: Gamma value must be in the range [0,1]" << '\n';
     } while (GAMMA<0 || GAMMA >1);
 
     do{
-        cout << "Please insert the population sample: ";
-        cin >> N;
+        std::cout << "Please insert the population sample: ";
+        std::cin >> N;
         if (N<=0)
-            cout << "Error: N must be greater than 0" << endl;
+            std::cout << "Error: N must be greater than 0" << '\n';
     } while (N<=0 );
 
     do{
-        cout << "Please insert the initial number of infected people: ";
-        cin >> I0;
+        std::cout << "Please insert the initial number of infected people: ";
+        std::cin >> I0;
         if (I0<=0)
-            cout << "Error: I0 value must be > 0" << endl;
+            std::cout << "Error: I0 value must be > 0" << '\n';
     } while (I0<=0 );
 
     do{
-        cout << "Please insert the number of days of development of the epidemic: ";
-        cin >> days;
+        std::cout << "Please insert the number of days of development of the epidemic: ";
+        std::cin >> days;
         if (days<=0)
-            cout << "Error: The number of days must be in the range ]0,2e^9]" << endl;
+            std::cout << "Error: The number of days must be in the range ]0,2e^9]" << '\n';
     } while (days<=0 );
 
     disease::Disease d(name, N, I0, BETA, GAMMA);
@@ -53,5 +53,5 @@ int main() {
     d.evolve(days);
     
     d.f_print();
-    cout << "Operation completed: file epidemic.txt is ready!" << endl;
+    std::cout << "Operation completed: file epidemic.txt is ready!" << '\n';
 }
