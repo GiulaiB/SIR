@@ -61,6 +61,34 @@ void disease::Disease::print() {
     ++i;
   }
 /*
+prova 1
+//std::cout << tab << i << tab << it.s << tab << it.i << tab << it.r << '\n';
+    if (tot_ = round(it.s) + round(it.r) + round(it.i)) {
+      std::cout << tab << i << tab << round(it.s) << tab << round(it.i) << tab << round(it.r) << '\n';
+    ++i;  
+    } else {if (tot_ < round(it.s) + round(it.r) + round(it.i) > tot_) {
+      std::cout << tab << i << tab << round(it.s) << tab << floor(it.i) << tab << round(it.r) << '\n';
+    ++i;  
+    }
+    if (tot_ > round(it.s) + round(it.r) + round(it.i) < tot_) {
+      std::cout << tab << i << tab << round(it.s) << tab << ceil(it.i) << tab << round(it.r) << '\n';
+    ++i;
+    }
+    }
+
+prova 2
+if (round(it.s) + round(it.r) + round(it.i) > tot_) {
+      std::cout << tab << i << tab << round(it.s) << tab << floor(it.i) << tab << round(it.r) << '\n';
+    ++i;  
+    } if (round(it.s) + round(it.r) + round(it.i) < tot_) {
+      std::cout << tab << i << tab << round(it.s) << tab << ceil(it.i) << tab << round(it.r) << '\n';
+    ++i;  
+    } else {
+    std::cout << tab << i << tab << round(it.s) << tab << round(it.i) << tab << round(it.r) << '\n';
+    ++i;
+    }
+  
+  altro
   for (auto const it : state_) {
     std::cout << std::setprecision(10) << tab << i << tab << (int)it.s << tab
               << (int)it.i << tab << (int)it.r << '\n';
