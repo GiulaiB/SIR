@@ -61,7 +61,7 @@ void disease::Disease::print() {
     ++i;
   }
 /*
-prova 1
+prova 1 //non funziona perchè stampa 400 volte
 //std::cout << tab << i << tab << it.s << tab << it.i << tab << it.r << '\n';
     if (tot_ = round(it.s) + round(it.r) + round(it.i)) {
       std::cout << tab << i << tab << round(it.s) << tab << round(it.i) << tab << round(it.r) << '\n';
@@ -76,7 +76,7 @@ prova 1
     }
     }
 
-prova 2
+prova 2 //non funziona perchè stampa 207 volte
 if (round(it.s) + round(it.r) + round(it.i) > tot_) {
       std::cout << tab << i << tab << round(it.s) << tab << floor(it.i) << tab << round(it.r) << '\n';
     ++i;  
