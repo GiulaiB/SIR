@@ -69,39 +69,16 @@ void disease::Disease::print() {
     }
     }
   }
-/*
-prova 1 //non funziona perchè stampa 400 volte
-//std::cout << tab << i << tab << it.s << tab << it.i << tab << it.r << '\n';
-    if (tot_ = round(it.s) + round(it.r) + round(it.i)) {
-      std::cout << tab << i << tab << round(it.s) << tab << round(it.i) << tab << round(it.r) << '\n';
-    ++i;  
-    } else {if (tot_ < round(it.s) + round(it.r) + round(it.i) > tot_) {
-      std::cout << tab << i << tab << round(it.s) << tab << floor(it.i) << tab << round(it.r) << '\n';
-    ++i;  
-    }
-    if (tot_ > round(it.s) + round(it.r) + round(it.i) < tot_) {
-      std::cout << tab << i << tab << round(it.s) << tab << ceil(it.i) << tab << round(it.r) << '\n';
-    ++i;
-    }
-    }
 
-prova 2 //non funziona perchè stampa 207 volte
-if (round(it.s) + round(it.r) + round(it.i) > tot_) {
-      std::cout << tab << i << tab << round(it.s) << tab << floor(it.i) << tab << round(it.r) << '\n';
-    ++i;  
-    } if (round(it.s) + round(it.r) + round(it.i) < tot_) {
-      std::cout << tab << i << tab << round(it.s) << tab << ceil(it.i) << tab << round(it.r) << '\n';
-    ++i;  
-    } else {
-    std::cout << tab << i << tab << round(it.s) << tab << round(it.i) << tab << round(it.r) << '\n';
-    ++i;
-    }
-  
-  altro
-  for (auto const it : state_) {
-    std::cout << std::setprecision(10) << tab << i << tab << (int)it.s << tab
-              << (int)it.i << tab << (int)it.r << '\n';
-    ++i;
-  }
-*/
+//saving the results in "epidemic.txt"
+void disease::Disease::f_print() { 
+  std::streambuf *backup = std::cout.rdbuf();
+  std::ofstream fp;
+  fp.open("epidemic.txt");
+  std::cout.rdbuf(fp.rdbuf());
+  print();
+  fp.close();
+  std::cout.rdbuf(backup);
+}
+
 }
