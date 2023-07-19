@@ -22,7 +22,7 @@ State disease::Disease::evolve_(State const &begin) {
   if (end.r > tot_) {
     end.r = tot_;
   }
-  end.i = tot_ - end.s - end.r;
+  end.i = tot_ - end.s - end.r; //condition N = s + i + r
   
   assert(!(end.s < 0));
   assert(!(end.i < 0));
@@ -69,6 +69,7 @@ void disease::Disease::print() {
     }
     }
   }
+}
 
 //saving the results in "epidemic.txt"
 void disease::Disease::f_print() { 
@@ -79,6 +80,4 @@ void disease::Disease::f_print() {
   print();
   fp.close();
   std::cout.rdbuf(backup);
-}
-
 }
