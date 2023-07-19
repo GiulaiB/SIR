@@ -9,6 +9,7 @@ struct State {
   double r;
 
   State(double sus, double inf, double rec) : s{sus}, i{inf}, r{rec} {
+
     assert(!(s < 0));
     assert(!(i < 0));
     assert(!(r < 0));
@@ -18,6 +19,8 @@ struct State {
     i = 0.;
     r = 0.;
   }
+
 };
 
+#endif
 #endif
