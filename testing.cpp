@@ -41,10 +41,7 @@ public:
     if (end.r > tot_) {
       end.r = tot_;
     }
-    end.i = begin.i + beta_ * begin.i * begin.s - gamma_ * begin.i;
-    if (end.i > tot_) {
-      end.i = tot_ - end.r - end.s;
-    }
+    end.i = tot_ - end.s - end.r;
     
     assert(!(end.s < 0));
     assert(!(end.i < 0));
