@@ -23,4 +23,3 @@ struct State {
 };
 
 #endif
-#endif
